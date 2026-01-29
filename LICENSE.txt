@@ -1,0 +1,5 @@
+Copyright 2026 Your Name
+
+You may use and modify this project for personal, educational, and non-commercial purposes only. 
+Commercial use is prohibited. 
+Derivatives must include proper attribution.
