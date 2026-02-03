@@ -1,0 +1,7 @@
+frames:
+   export_directory: frames
+
+movies:
+   export_directory: movies
+
+debug: True
