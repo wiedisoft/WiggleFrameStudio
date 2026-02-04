@@ -5,3 +5,4 @@ movies:
    export_directory: movies
 
 debug: True
+language: de

@@ -1,0 +1,4 @@
+de:
+  splash_screen:
+    frames_exists: "Frames-Ordner ist nicht leer. Soll der letzte Film fortgesetzt werden?"
+    yes_no_quit: "RETURN - Fortsetzen, BACKSPACE - Ordner leeren, Q - Beenden"
