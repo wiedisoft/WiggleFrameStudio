@@ -1,30 +1,31 @@
 import re
 
-from ui.splashscreen import Splash_Screen
-from utils.logger import setup_logger
 import resources.core as core
+
+from ui.splash_screen import SplashScreen
+from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
 class Files():
 
     @staticmethod
-    def check_frames(screen):
+    def check_frames(splash: SplashScreen):
         directory = core.config.frames.export_directory
         directory.mkdir(parents=True, exist_ok=True)
         if any(directory.iterdir()):
             logger.info("Frames directory is not empty")
-            match(Splash_Screen.show_dialog(screen, "splash_screen.frames_exists")):
+            match(splash.show_dialog("splash_screen.frames_exists")):
                 case "quit":
                     logger.info("User chose to quit")
                     exit()
                 case "backspace":
                     logger.info("User chose to start a new movie; deleting existing frames")
-                    Files.delete_files()
-                    return 0
+                    return Files.delete_files()
                 case "return":
                     logger.info("User chose to resume last movie; keeping existing frames")
                     return Files.get_last_frame_number()
+        return 0
 
     @staticmethod
     def delete_files():

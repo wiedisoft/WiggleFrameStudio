@@ -1,11 +1,11 @@
 import pygame
 import numpy as np
 
-class GUI:
-    def __init__(self):
-        pygame.init()
-        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-        pygame.display.set_caption("Wiggle Frame Studio")
+import resources.styles as styles
+
+class MainGUI:
+    def __init__(self, screen):
+        self.screen = screen
         self.clock = pygame.time.Clock()
 
     def scale_to_80_percent(self, surface, screen_size):
@@ -17,19 +17,28 @@ class GUI:
         new_size = (int(sw * scale), int(sh * scale))
         return pygame.transform.smoothscale(surface, new_size)  
 
-    def display_frame(self, frame):
+    def display_frame(self, frame, fps=30):
         frame_corrected = frame[:, :, ::-1]
         surface = pygame.surfarray.make_surface(np.rot90(frame_corrected))
         surface = self.scale_to_80_percent(surface, self.screen.get_size())
-        x = (self.screen.get_width() - surface.get_width()) // 2
-        y = (self.screen.get_height() - surface.get_height()) // 2
-        self.screen.fill((0, 0, 0))
-        self.screen.blit(surface, (x, y))
+
+        border_width = 8
+        border_radius = 15
+
+        frame_surf = pygame.Surface(
+            (surface.get_width() + border_width*2, surface.get_height() + border_width*2),
+            pygame.SRCALPHA
+        )
+
+        frame_surf.blit(surface, (border_width, border_width))
+        rect = pygame.Rect(0, 0, frame_surf.get_width(), frame_surf.get_height())
+        pygame.draw.rect(frame_surf, styles.FONT_COLOR_TITLE, rect, border_width, border_radius)
+        x = (self.screen.get_width() - frame_surf.get_width()) // 2
+        y = (self.screen.get_height() - frame_surf.get_height()) // 2
+
+        self.screen.blit(frame_surf, (x, y))
         pygame.display.flip()
+        self.tick(fps)
 
     def tick(self, fps=30):
         self.clock.tick(fps)
-
-    def quit(self):
-        pygame.quit()
-

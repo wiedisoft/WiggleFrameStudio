@@ -1,4 +1,5 @@
 from picamera2 import Picamera2
+
 import resources.core as core
 
 class Camera:

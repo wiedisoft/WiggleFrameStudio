@@ -1,7 +1,9 @@
 import pygame
 
-from app import MainApp
 import resources.core as core
+
+from app import MainApp
+
 
 if __name__ == "__main__":
     pygame.init()
