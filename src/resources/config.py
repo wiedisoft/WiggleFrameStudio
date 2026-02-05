@@ -14,13 +14,14 @@ class Frames:
 @dataclass
 class Movies:
     export_directory: Path
+    frames_per_second: int
+    filename: str
 
 @dataclass
 class AppConfig:
     frames: Frames
     movies: Movies
     language: str
-    debug: bool
 
 class Config:
     _config: AppConfig | None = None
@@ -46,10 +47,11 @@ class Config:
                 Path(Config.require(frames_raw, "export_directory"))
             ),
             movies=Movies(
-                Path(Config.require(movies_raw, "export_directory"))
+                Path(Config.require(movies_raw, "export_directory")),
+                Config.require(movies_raw, "frames_per_second"),
+                Config.require(movies_raw, "filename"),
             ),
-            language=raw.get("language", "en"),
-            debug=raw.get("debug", False),
+            language=raw.get("language", "en")
         )
     
     @staticmethod

@@ -3,6 +3,7 @@ frames:
 
 movies:
    export_directory: movies
+   frames_per_second: 20
+   filename: my_movie
 
-debug: True
 language: de

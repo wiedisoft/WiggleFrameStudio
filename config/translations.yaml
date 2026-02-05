@@ -2,3 +2,10 @@ de:
   splash_screen:
     frames_exists: "Frames-Ordner ist nicht leer. Soll der letzte Film fortgesetzt werden?"
     yes_no_quit: "RETURN - Fortsetzen, BACKSPACE - Ordner leeren, Q - Beenden"
+  main_ui:
+    export_movie: "Eportiere Film"
+    read_frames: "Lese Bilder"
+    no_frames: "Keine Bilder gefunden"
+    prepare_movie: "Bereite Film vor"
+    save_movie: "Speichere Film"
+    successfully_saved: "Film erfolgreich gespeichert"

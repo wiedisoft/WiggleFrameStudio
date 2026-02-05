@@ -19,7 +19,7 @@ def gui_keymap(app):
         pygame.K_q: app.quit,
         pygame.K_SPACE: app.take_photo,
         pygame.K_BACKSPACE: app.delete_last_frame,
-        pygame.K_RETURN: ()
+        pygame.K_RETURN: app.preview_movie
     }
 
 def splash_keymap():
