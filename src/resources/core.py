@@ -1,5 +1,4 @@
 import pygame
-
 from resources.translation import Translate
 from resources.config import Config
 from utils.logger import setup_logger

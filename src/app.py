@@ -1,14 +1,12 @@
 import pygame
 import threading
-
 import resources.core as core
 import resources.styles as styles
-
 from media.camera import Camera
-import media.movie as Movie
+import media.movie as movie
 from ui.main_ui import MainGUI
 from ui.splash_screen import SplashScreen
-from utils.files import Files
+from utils.files import delete_last_frame, check_frames
 from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -23,7 +21,7 @@ class MainApp:
         splash = SplashScreen(self.screen)
         splash.show_splash()
         
-        frame = Files.check_frames(splash)
+        frame = check_frames(splash, logger)
         self.cam = Camera(frame)
         self.gui = MainGUI(self.screen)
         self.running = True
@@ -37,12 +35,12 @@ class MainApp:
         logger.info(f"Frame saved: {filename}")
 
     def delete_last_frame(self):
-        if (Files.delete_last_frame()):
+        if delete_last_frame(logger):
             self.cam.set_frame_number(self.cam.get_frame_number() - 1)
 
     def preview_movie(self):
         self.export_thread = threading.Thread(
-            target=Movie.export_movie,
+            target=movie.export_movie,
             args=(self.gui,),
             daemon=True
         )
@@ -76,7 +74,6 @@ class MainApp:
                 self.gui.set_status_text("")
                 self.reset_export_ui_at = None
 
-             
         self.quit()
         
     def quit(self):

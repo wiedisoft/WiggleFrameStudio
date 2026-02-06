@@ -1,5 +1,4 @@
 from picamera2 import Picamera2
-
 import resources.core as core
 
 class Camera:
@@ -14,7 +13,7 @@ class Camera:
         return self.frame_number
 
     def set_frame_number(self, value):
-        if (value > -1):
+        if value > -1:
             self.frame_number = value
 
     def _configure_preview(self):
