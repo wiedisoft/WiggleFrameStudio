@@ -33,7 +33,6 @@ class MainApp:
         self.running = True
         self.reset_export_ui_at = None
         self.export_thread = None
-
         self.keymap = core.gui_keymap(self)
 
     def take_photo(self):
@@ -45,9 +44,19 @@ class MainApp:
 
     def delete_last_frame(self):
         if delete_last_frame(logger):
-            self.cam.set_frame_number(self.cam.get_frame_number() - 1)
+            self.cam.frame_number = self.cam.frame_number() - 1
 
     def preview_movie(self):
+        self.gui.capture_mode = not self.gui.capture_mode
+        frames = count_frames()
+        if not self.gui.capture_mode:
+            self.gui.movie_information.set_text(core.translate.t("main_ui.movie_preview", current=1, total=frames))
+            self.gui.frame_player_view.reset()
+        else:
+            self.gui.movie_information.set_text(core.translate.t("main_ui.movie_information", count=frames,
+                                                                 length=get_movie_length(frames)))
+
+    def save_movie(self):
         self.export_thread = threading.Thread(
             target=movie.export_movie,
             args=(self.gui,),

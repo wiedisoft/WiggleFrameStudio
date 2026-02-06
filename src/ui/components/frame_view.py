@@ -25,6 +25,7 @@ class FrameView(UIComponent):
         self.frame = None
         self.width = 0
         self.height = 0
+
         self._cached_surface = None
 
     def set_frame(self, frame):

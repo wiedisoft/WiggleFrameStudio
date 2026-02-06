@@ -10,3 +10,4 @@ de:
     save_movie: "Speichere Film"
     successfully_saved: "Film erfolgreich gespeichert"
     movie_information: "{count} Bilder – der Film wird ungefähr {length} Sekunden lang"
+    movie_preview: "Filmvorschau (Bild {current} / {total})"
