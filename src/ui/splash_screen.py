@@ -45,6 +45,14 @@ class SplashScreen:
             centered=True
         )
 
+        self.copyright = TextBox(
+            "© 2026 Wiedisoft — Non‑commercial license",
+            styles.FONT_TINY,
+            styles.FONT_COLOR_TITLE,
+            x=0.90,
+            y=0.98,
+        )
+
     @staticmethod
     def load_svg(path):
         try:
@@ -61,6 +69,7 @@ class SplashScreen:
         self.logo.draw(self.screen)
         self.title.draw(self.screen)
         self.subtitle.draw(self.screen)
+        self.copyright.draw(self.screen)
 
         pygame.display.flip()
 

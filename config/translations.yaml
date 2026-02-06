@@ -9,3 +9,4 @@ de:
     prepare_movie: "Bereite Film vor"
     save_movie: "Speichere Film"
     successfully_saved: "Film erfolgreich gespeichert"
+    movie_information: "{count} Bilder – der Film wird ungefähr {length} Sekunden lang"

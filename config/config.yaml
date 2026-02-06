@@ -3,7 +3,7 @@ frames:
 
 movies:
    export_directory: movies
-   frames_per_second: 20
+   frames_per_second: 12
    filename: my_movie
 
 language: de

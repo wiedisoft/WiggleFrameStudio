@@ -19,6 +19,9 @@ def check_frames(splash: SplashScreen, logger):
                 return get_last_frame_number(logger)
     return 0
 
+def count_frames():
+    directory = core.config.frames.export_directory
+    return len(list(directory.glob("frame_*.jpg")))
 
 def delete_files(logger):
     directory = core.config.frames.export_directory
@@ -55,7 +58,7 @@ def get_last_frame_number(logger):
         return 0
 
     max_frame = 0
-    pattern = re.compile(r"frame_(\d+)\.png")
+    pattern = re.compile(r"frame_(\d+)\.jpg")
     for file in directory.iterdir():
         match = pattern.match(file.name)
         if match:

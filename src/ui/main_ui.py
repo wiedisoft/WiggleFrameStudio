@@ -1,9 +1,12 @@
 import pygame
 from queue import Queue
 import resources.styles as styles
+from media.movie import get_movie_length
 from ui.components.frame_view import FrameView
 from ui.components.progress_bar import ProgressBar
 from ui.components.text_box import TextBox
+import resources.core as core
+from utils.files import count_frames
 
 
 class MainGUI:
@@ -16,13 +19,25 @@ class MainGUI:
 
         self.frame_view = FrameView(x=0.5, y=0.5, centered=True)
 
+        frames = count_frames()
         self.movie_information = TextBox(
-            "Information",
-            styles.FONT_REGULAR,
-            styles.FONT_COLOR_TITLE,
-            x=0.1,
-            y=0.09,
-            centered=False)
+            core.translate.t("main_ui.movie_information", count=frames,
+                             length=get_movie_length(frames)),
+                             styles.FONT_TINY,
+                             styles.FONT_COLOR_TITLE,
+                             x=0.1,
+                             y=0.11,
+                             centered=False)
+
+        self.title = TextBox(
+            "WiggleFrameStudio",
+            styles.FONT_SUB_TITLE,
+            styles.COLOR_HIGHLIGHT,
+            x=0.5,
+            y=0.05,
+            outline_color=styles.FONT_COLOR_TITLE,
+            outline_width=8,
+            centered=True)
 
         self.progress_bar = ProgressBar(
             width=0.4,
@@ -51,6 +66,7 @@ class MainGUI:
         self.frame_view.set_frame(frame)
         self.frame_view.draw(self.screen)
         self.movie_information.draw(self.screen)
+        self.title.draw(self.screen)
         if self.progress_bar.progress is not None:
             self.progress_bar.draw(self.screen)
             self.status_text.draw(self.screen)
