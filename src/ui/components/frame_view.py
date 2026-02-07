@@ -1,7 +1,9 @@
-import pygame
 import numpy as np
-from ui.components.ui_component import UIComponent
+import pygame
+
 import resources.styles as styles
+from ui.components.ui_component import UIComponent
+
 
 class FrameView(UIComponent):
     def __init__(

@@ -1,5 +1,6 @@
 import logging
 
+
 class ColorFormatter(logging.Formatter):
     COLORS = {
         "DEBUG": "\033[37m",
@@ -15,7 +16,9 @@ class ColorFormatter(logging.Formatter):
     def format(self, record):
         message = super().format(record)
 
-        levelname_colored = f"{self.BOLD}{self.COLORS.get(record.levelname, self.RESET)}{record.levelname}{self.RESET}"
+        levelname_colored = (f"{self.BOLD}"
+                             f"{self.COLORS.get(record.levelname, self.RESE
+                             T)}{record.levelname}{self.RESET}")
         message = message.replace(record.levelname, levelname_colored)
 
         name_colored = f"{self.BOLD}{self.NAME_COLOR}{record.name}{self.RESET}"

@@ -1,5 +1,6 @@
 from ui.components.ui_component import UIComponent
 
+
 class ImageComponent(UIComponent):
     def __init__(self, image_surface, x=0, y=0, centered=False, visible=True):
         super().__init__(x=x, y=y, centered=centered, visible=visible)

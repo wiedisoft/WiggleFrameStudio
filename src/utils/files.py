@@ -1,6 +1,8 @@
 import re
+
 import resources.core as core
 from ui.splash_screen import SplashScreen
+
 
 def check_frames(splash: SplashScreen, logger):
     directory = core.config.frames.export_directory
@@ -19,9 +21,11 @@ def check_frames(splash: SplashScreen, logger):
                 return get_last_frame_number(logger)
     return 0
 
+
 def count_frames():
     directory = core.config.frames.export_directory
     return len(list(directory.glob("frame_*.jpg")))
+
 
 def delete_files(logger):
     directory = core.config.frames.export_directory

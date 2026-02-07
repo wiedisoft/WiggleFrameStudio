@@ -1,5 +1,6 @@
 from ui.components.ui_component import UIComponent
 
+
 class Dialog(UIComponent):
     def __init__(self, elements, spacing=10, x=0, y=0, visible=True, centered=True):
         super().__init__(x=x, y=y, visible=visible, centered=centered)

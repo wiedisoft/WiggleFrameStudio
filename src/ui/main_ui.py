@@ -1,15 +1,14 @@
-import pygame
 from queue import Queue
 
-from asyncore import loop
+import pygame
 
+import resources.core as core
 import resources.styles as styles
 from media.movie import get_movie_length
 from ui.components.frame_player_view import FramePlayerView
 from ui.components.frame_view import FrameView
 from ui.components.progress_bar import ProgressBar
 from ui.components.text_box import TextBox
-import resources.core as core
 from utils.files import count_frames
 
 
@@ -28,13 +27,14 @@ class MainGUI:
         self.movie_information = TextBox(
             core.translate.t("main_ui.movie_information", count=frames,
                              length=get_movie_length(frames)),
-                             styles.FONT_TINY,
-                             styles.FONT_COLOR_TITLE,
-                             x=0.1,
-                             y=0.11,
-                             centered=False)
+            styles.FONT_TINY,
+            styles.FONT_COLOR_TITLE,
+            x=0.1,
+            y=0.11,
+            centered=False)
 
-        self.frame_player_view = FramePlayerView(x=0.5, y=0.5, centered=True, on_frame_change=self.on_player_frame_change)
+        self.frame_player_view = FramePlayerView(x=0.5, y=0.5, centered=True,
+                                                 on_frame_change=self.on_player_frame_change)
 
         self.title = TextBox(
             "WiggleFrameStudio",
@@ -67,7 +67,8 @@ class MainGUI:
         )
 
     def on_player_frame_change(self, index, total):
-        self.movie_information.set_text(core.translate.t("main_ui.movie_preview", current=index, total=total))
+        self.movie_information.set_text(
+            core.translate.t("main_ui.movie_preview", current=index, total=total))
 
     def display_frame(self, frame, fps=30):
         self.frame = frame

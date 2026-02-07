@@ -1,20 +1,22 @@
 import pygame
+
 from ui.components.ui_component import UIComponent
+
 
 class ProgressBar(UIComponent):
     def __init__(
-            self,
-            width=400,
-            height=30,
-            border_radius=15,
-            border_width=4,
-            border_color=(255, 255, 255),
-            bg_color=(80, 80, 80),
-            fill_color=(0, 200, 0),
-            x=0,
-            y=0,
-            visible=True,
-            centered=True
+        self,
+        width=400,
+        height=30,
+        border_radius=15,
+        border_width=4,
+        border_color=(255, 255, 255),
+        bg_color=(80, 80, 80),
+        fill_color=(0, 200, 0),
+        x=0,
+        y=0,
+        visible=True,
+        centered=True
     ):
         super().__init__(x=x, y=y, visible=visible, centered=centered)
 

@@ -1,7 +1,9 @@
-import pygame
-import cairosvg
 import io
+
+import cairosvg
+import pygame
 from PIL import Image
+
 import resources.core as core
 import resources.styles as styles
 from ui.components.image_component import ImageComponent
@@ -9,6 +11,7 @@ from ui.components.text_box import TextBox
 from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
+
 
 class SplashScreen:
     SPACING = 0.05

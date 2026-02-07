@@ -1,9 +1,12 @@
-import yaml
 from pathlib import Path
 from typing import Any
+
+import yaml
+
 from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
+
 
 class Translate:
     def __init__(

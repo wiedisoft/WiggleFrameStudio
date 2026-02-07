@@ -1,19 +1,21 @@
 import pygame
+
 from ui.components.ui_component import UIComponent
+
 
 class TextBox(UIComponent):
     def __init__(
-            self,
-            text,
-            font,
-            color,
-            x=0,
-            y=0,
-            visible=True,
-            outline_color=None,
-            outline_width=0,
-            padding=0,
-            centered=True
+        self,
+        text,
+        font,
+        color,
+        x=0,
+        y=0,
+        visible=True,
+        outline_color=None,
+        outline_width=0,
+        padding=0,
+        centered=True
     ):
         super().__init__(x=x, y=y, visible=visible, centered=centered)
 

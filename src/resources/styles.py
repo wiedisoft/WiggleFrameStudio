@@ -1,5 +1,7 @@
 import os
+
 import pygame
+
 from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -25,4 +27,4 @@ COLOR_ACCENT = (254, 202, 56)
 COLOR_FOREGROUND = (0, 174, 199)
 COLOR_FOREGROUND_DARK = (9, 36, 66)
 
-BACKGROUND_COLOR = (1, 5, 32) 
+BACKGROUND_COLOR = (1, 5, 32)

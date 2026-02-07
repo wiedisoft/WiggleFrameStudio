@@ -1,8 +1,10 @@
-import pygame
-from ui.components.ui_component import UIComponent
-import resources.styles as styles
-import resources.core as core
 import time
+
+import pygame
+
+import resources.core as core
+import resources.styles as styles
+from ui.components.ui_component import UIComponent
 
 
 class FramePlayerView(UIComponent):
@@ -17,7 +19,7 @@ class FramePlayerView(UIComponent):
         visible=True,
         centered=True,
         frame_interval=0.25,
-        on_frame_change = None
+        on_frame_change=None
     ):
         super().__init__(x=x, y=y, visible=visible, centered=centered)
 
@@ -63,7 +65,8 @@ class FramePlayerView(UIComponent):
             self.current_index = (self.current_index + 1) % len(self.frames)
             self.last_frame_time = now
 
-        if self.on_frame_change: self.on_frame_change(self.current_index + 1, len(self.frames))
+        if self.on_frame_change: self.on_frame_change(self.current_index + 1,
+                                                      len(self.frames))
 
     def scale_surface(self, surface, screen_size):
         sw, sh = surface.get_size()

@@ -1,13 +1,15 @@
-import pygame
 import threading
+
+import pygame
+
+import media.movie as movie
 import resources.core as core
 import resources.styles as styles
 from media.camera import Camera
-import media.movie as movie
 from media.movie import get_movie_length
 from ui.main_ui import MainGUI
 from ui.splash_screen import SplashScreen
-from utils.files import delete_last_frame, check_frames, count_frames
+from utils.files import check_frames, count_frames, delete_last_frame
 from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
@@ -39,8 +41,9 @@ class MainApp:
         filename = self.cam.capture_photo()
         logger.info(f"Frame saved: {filename}")
         frames = count_frames()
-        self.gui.movie_information.set_text(core.translate.t("main_ui.movie_information", count=frames,
-                                                             length=get_movie_length(frames)))
+        self.gui.movie_information.set_text(
+            core.translate.t("main_ui.movie_information", count=frames,
+                             length=get_movie_length(frames)))
 
     def delete_last_frame(self):
         if delete_last_frame(logger):
@@ -50,11 +53,16 @@ class MainApp:
         self.gui.capture_mode = not self.gui.capture_mode
         frames = count_frames()
         if not self.gui.capture_mode:
-            self.gui.movie_information.set_text(core.translate.t("main_ui.movie_preview", current=1, total=frames))
+            self.gui.movie_information.set_text(
+                core.translate.t("main_ui.movie_preview", current=1, total=frames))
             self.gui.frame_player_view.reset()
         else:
-            self.gui.movie_information.set_text(core.translate.t("main_ui.movie_information", count=frames,
-                                                                 length=get_movie_length(frames)))
+            self.gui.movie_information.set_text(
+                core.translate.t("main_ui.movie_information", count=frames,
+                                 length=get_movie_length(frames)))
+
+    def delete_project(self):
+        return
 
     def save_movie(self):
         self.export_thread = threading.Thread(

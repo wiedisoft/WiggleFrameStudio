@@ -1,5 +1,7 @@
 from picamera2 import Picamera2
+
 import resources.core as core
+
 
 class Camera:
     def __init__(self, start_frame=0, size=(1920, 1080)):
@@ -21,7 +23,8 @@ class Camera:
 
     def capture_photo(self):
         self.frame_number += 1
-        filename = f"{core.config.frames.export_directory}/frame_{self.frame_number:04d}.jpg"
+        filename = (f"{core.config.frames.export_directory}/frame_"
+                    f"{self.frame_number:04d}.jpg")
         self.picam2.capture_file(filename, format="jpeg")
         return filename
 

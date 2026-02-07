@@ -1,4 +1,5 @@
 import pygame
+
 import resources.core as core
 from app import MainApp
 

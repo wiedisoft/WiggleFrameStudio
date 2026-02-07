@@ -1,13 +1,17 @@
-import yaml
-from pathlib import Path
 from dataclasses import dataclass
+from pathlib import Path
+
+import yaml
+
 from utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
+
 @dataclass
 class Frames:
     export_directory: Path
+
 
 @dataclass
 class Movies:
@@ -15,11 +19,13 @@ class Movies:
     frames_per_second: int
     filename: str
 
+
 @dataclass
 class AppConfig:
     frames: Frames
     movies: Movies
     language: str
+
 
 class Config:
     _config: AppConfig | None = None
@@ -51,7 +57,7 @@ class Config:
             ),
             language=raw.get("language", "en")
         )
-    
+
     @staticmethod
     def require(raw: dict, key: str):
         if key not in raw:
